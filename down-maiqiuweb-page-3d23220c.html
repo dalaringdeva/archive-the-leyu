@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>买球网 · 信息参考与日常查询</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+      background: #f6f8fc;
+      color: #1f2937;
+      line-height: 1.7;
+    }
+
+    /* 深色头图 */
+    .hero {
+      background: linear-gradient(145deg, #0b1926 0%, #1b2c3f 100%);
+      color: #e8edf5;
+      padding: 4rem 1.5rem 3.2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid #b0c7db33;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: repeating-linear-gradient(90deg, #3a6ea5 0px, #3a6ea5 12px, transparent 12px, transparent 28px);
+      opacity: 0.35;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero p.sub {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #b2c9e2;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .hero .tagline {
+      margin-top: 1.8rem;
+      background: rgba(255, 255, 255, 0.06);
+      display: inline-block;
+      padding: 0.3rem 1.5rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: #b9d0ea;
+      border: 0.5px solid #4a739b;
+    }
+
+    /* 浅色正文区 */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.8rem 1.5rem 4rem;
+    }
+
+    .intro-block {
+      background: white;
+      border-radius: 24px;
+      padding: 2.5rem 2.2rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02), 0 1px 4px rgba(0, 20, 40, 0.04);
+      margin-bottom: 2.8rem;
+    }
+
+    .intro-block p:first-child {
+      font-size: 1.1rem;
+      color: #1e3349;
+    }
+
+    .intro-block p + p {
+      margin-top: 1.2rem;
+    }
+
+    /* 承接 & 特点卡片区域 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.8rem;
+      margin: 2.4rem 0 2rem;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+      border: 1px solid #eef2f7;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(26, 67, 113, 0.06);
+    }
+
+    .feature-card .icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.8;
+    }
+
+    .feature-card h3 {
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: #0f263c;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.3px;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: #3e546a;
+    }
+
+    /* 强调色用于链接 */
+    a {
+      color: #2a6291;
+      text-decoration: none;
+      border-bottom: 1px dotted #b0c7de;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    a:hover,
+    a:focus {
+      color: #0e3d61;
+      border-bottom: 1px solid #0e3d61;
+    }
+
+    .scene-box {
+      background: white;
+      padding: 2rem 2.2rem;
+      border-radius: 24px;
+      margin-bottom: 2.4rem;
+      border-left: 4px solid #2a6291;
+    }
+
+    .scene-box h2 {
+      font-weight: 500;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #172c3f;
+    }
+
+    .scene-box ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .scene-box li {
+      padding: 0.35rem 0 0.35rem 1.6rem;
+      position: relative;
+      color: #2d435b;
+    }
+
+    .scene-box li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: #2a6291;
+      font-weight: 400;
+    }
+
+    .faq-mini {
+      background: white;
+      border-radius: 24px;
+      padding: 1.6rem 2rem 2rem;
+      margin-bottom: 2.4rem;
+      border: 1px solid #e5ecf3;
+    }
+
+    .faq-mini details {
+      margin-bottom: 0.7rem;
+    }
+
+    .faq-mini summary {
+      font-weight: 500;
+      cursor: pointer;
+      color: #1a3e5a;
+      padding: 0.5rem 0;
+      font-size: 1rem;
+    }
+
+    .faq-mini details p {
+      margin: 0.5rem 0 0.8rem 0.5rem;
+      color: #3c566e;
+      font-size: 0.95rem;
+    }
+
+    .gentle-end {
+      text-align: center;
+      padding: 2.5rem 1rem 1.8rem;
+      border-top: 1px solid #dce4ed;
+      margin-top: 2rem;
+      color: #3f5b78;
+      font-size: 0.95rem;
+    }
+
+    .gentle-end .small-note {
+      display: inline-block;
+      background: #eef3f9;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      color: #2a5073;
+    }
+
+    /* 响应式 */
+    @media (max-width: 660px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .intro-block {
+        padding: 1.8rem 1.2rem;
+      }
+      .scene-box {
+        padding: 1.5rem 1.2rem;
+      }
+      .feature-grid {
+        gap: 1.2rem;
+      }
+      .faq-mini {
+        padding: 1.2rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <h1>买球网</h1>
+    <p class="sub">信息对照 · 延伸阅读 · 日常查询</p>
+    <div class="tagline">从一次检索到持续关注</div>
+  </header>
+
+  <main class="container">
+    <!-- 开场短句 + 承接 -->
+    <div class="intro-block">
+      <p>很多人第一次打开浏览器搜索「<a href="https://down-maiqiuweb.com">买球网</a>」，往往只是想快速核对某个术语或了解背景。其实除了直接获取信息，这个地址更可以作为日常查阅与对照的起点——尤其在需要横向比较不同来源的时候。</p>
+      <p>基于这种需求，我们把页面设计成更适合反复翻阅的结构：不必每次都从头开始，而是像查词典一样，精准定位到感兴趣的部分。以下列出几个常见的切入方向。</p>
+    </div>
+
+    <!-- 特点列表（卡片） -->
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon">📋</div>
+        <h3>栏目对照</h3>
+        <p>从趋势到分类，每个模块都保持独立，方便与手边资料逐一比对。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔍</div>
+        <h3>延伸阅读</h3>
+        <p>隐藏在段落中的索引与注释，可以引导你进一步探索相关话题。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📎</div>
+        <h3>变化记录</h3>
+        <p>页面内容会随不同批次调整措辞与侧重，适合关注细微表述差异的用户。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🧩</div>
+        <h3>低噪浏览</h3>
+        <p>去掉冗余的引导，把注意力集中在白描式的信息呈现上。</p>
+      </div>
+    </div>
+
+    <!-- 场景段落 -->
+    <div class="scene-box">
+      <h2>日常场景举例</h2>
+      <ul>
+        <li>当你需要快速确认某个通用概念，又不想被过多营销打扰时，<a href="https://down-maiqiuweb.com">买球网</a>提供一种相对克制的阅读节奏。</li>
+        <li>与朋友讨论时，可以把它作为第三方参考资料，对比不同表述的用词和语境。</li>
+        <li>整理个人笔记或做摘要时，从中提取定义性语句，再补充自己的延伸理解。</li>
+        <li>偶尔浏览也可以作为阶段性回顾——每隔一段时间打开，内容和视角常有更新。</li>
+      </ul>
+    </div>
+
+    <!-- 提示 / FAQ 摘要 -->
+    <div class="faq-mini">
+      <h2 style="font-weight: 500; font-size: 1.1rem; color: #1b3046; margin-bottom: 0.8rem;">常见疑问摘要</h2>
+      <details>
+        <summary>这个页面有什么独特之处？</summary>
+        <p>内容结构不定期调整，每次打开都可能看到不同的章节划分和措辞，适合需要从多个角度理解同一概念的用户。</p>
+      </details>
+      <details>
+        <summary>为什么强调对照和延伸？</summary>
+        <p>很多时候单一来源未必满足多维度需求。把<a href="https://down-maiqiuweb.com">买球网</a>当作其中一个参照点，再结合其他资料，能形成更立体的认知框架。</p>
+      </details>
+      <details>
+        <summary>怎样获得更好的浏览体验？</summary>
+        <p>建议使用桌面端或平板阅读，配色和卡片布局在大屏幕上层次更分明。移动端也做了适配，但长文本的对照效果稍弱一些。</p>
+      </details>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="gentle-end">
+      <p>无论你是第一次到来，还是习惯性翻开，都希望这里提供的信息能成为你延伸阅读的其中一块砖石。</p>
+      <span class="small-note">页面内容保持克制与简洁，不设诱导与夸张表述</span>
+    </div>
+
+  </main>
+
+</body>
+</html>
